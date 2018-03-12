@@ -14,14 +14,14 @@ namespace Bildverarbeitung_Wallberg
             Color pixCol;
             int sumCol;
 
-            for(int x=0; x < map.Height; x++)
+            for (int x = 0; x < map.Height; x++)
             {
                 for (int y = 0; y < map.Width; y++)
                 {
                     pixCol = map.GetPixel(x, y);
-                    sumCol = (pixCol.R + pixCol.G + pixCol.B)/3;
-                    
-                    map.SetPixel(x, y, Color.FromArgb(sumCol,sumCol,sumCol));
+                    sumCol = (pixCol.R + pixCol.G + pixCol.B) / 3;
+
+                    map.SetPixel(x, y, Color.FromArgb(sumCol, sumCol, sumCol));
                 }
             }
 
@@ -41,16 +41,25 @@ namespace Bildverarbeitung_Wallberg
                 {
                     pixCol = map.GetPixel(x, y);
 
-                    histoArray[pixCol.B] = histoArray[pixCol.B]++;
+                    histoArray[pixCol.B] = histoArray[pixCol.B] + 1;
                 }
             }
 
-            for(int i = 0; i < histoArray.Length; i++)
+            for (int i = 0; i < 256; i++)
             {
-                for(int y = map.Height; y > (map.Height / 3)*2 + (map.Height / 3); y--)
+                histoArray[i] = (int)Math.Round((double)(histoArray[i] * 100 / (map.Height * map.Width)), MidpointRounding.AwayFromZero);
+            }
+
+            for (int i = 0; i < histoArray.Length*3; i++)
+            {
+                for (int y = map.Height; y > (map.Height / 3) * 2 + (map.Height / 3); y--)
                 {
-                    
+                    if (y != (y - histoArray[i/3]))
+                    {
+                        map.SetPixel(i, y-1, Color.Red);
+                    }
                 }
+                i = i + 3;
             }
 
             return map;

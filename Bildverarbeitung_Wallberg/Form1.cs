@@ -13,13 +13,13 @@ namespace Bildverarbeitung_Wallberg
     public partial class Form1 : Form
     {
         Bitmap map;
-        string pictureName = "\\Lenna.bmp";
+        string pictureName = "Kaffefleck.jpg";
 
         public Form1()
         {
             InitializeComponent();
 
-            map = Load_Image(DefaultVariables.GetProjectPath() + "\\Picture\\" + pictureName);
+            map = Load_Image(DefaultVariables.GetProjectPath() + "Picture\\" + pictureName);
 
             this.pbMain.Size = new System.Drawing.Size(map.Size.Width, map.Size.Height);
             this.pbMain.Image = map;
