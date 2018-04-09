@@ -9,6 +9,11 @@ namespace Bildverarbeitung_Wallberg
 {
     public static class Bildverarbeitung
     {
+        public static Bitmap Load_Image(string imgPath)
+        {
+            return new Bitmap(imgPath);
+        }
+
         public static Bitmap ImageToGrey(Bitmap map)
         {
             Color pixCol;
@@ -28,41 +33,45 @@ namespace Bildverarbeitung_Wallberg
             return map;
         }
 
-        public static Bitmap LoadHistogramInImage(Bitmap map)
+        public static Bitmap LoadHistogramInImage(Bitmap bmpimg)
         {
             int[] histoArray = new int[256];
             Color pixCol;
 
-            map = ImageToGrey(map);
+            bmpimg = ImageToGrey(bmpimg);
 
-            for (int x = 0; x < map.Height; x++)
+            for (int x = 0; x < bmpimg.Height; x++)
             {
-                for (int y = 0; y < map.Width; y++)
+                for (int y = 0; y < bmpimg.Width; y++)
                 {
-                    pixCol = map.GetPixel(x, y);
+                    pixCol = bmpimg.GetPixel(x, y);
 
                     histoArray[pixCol.B] = histoArray[pixCol.B] + 1;
                 }
             }
 
-            for (int i = 0; i < 256; i++)
+            for (int i = 0; i < histoArray.Length; i++)
             {
-                histoArray[i] = (int)Math.Round((double)(histoArray[i] * 100 / (map.Height * map.Width)), MidpointRounding.AwayFromZero);
+                histoArray[i] = (int)Math.Round((double)(histoArray[i] / bmpimg.Height), MidpointRounding.AwayFromZero);
             }
 
-            for (int i = 0; i < histoArray.Length*3; i++)
+            int calcWidth = (int)Math.Round((double)bmpimg.Width / histoArray.Length);
+            int counterArray = 0;
+
+            for (int x = 0; x < bmpimg.Width; x++)
             {
-                for (int y = map.Height; y > (map.Height / 3) * 2 + (map.Height / 3); y--)
+                for (int i = 0; i < calcWidth; i++)
                 {
-                    if (y != (y - histoArray[i/3]))
+                    for (int y = bmpimg.Height; y >= (bmpimg.Height - histoArray[counterArray]); y--)
                     {
-                        map.SetPixel(i, y-1, Color.Red);
+                        bmpimg.SetPixel((x+i), y-1, Color.Black);
                     }
                 }
-                i = i + 3;
+                counterArray++;
+                x++;
             }
 
-            return map;
+            return bmpimg;
         }
 
     }

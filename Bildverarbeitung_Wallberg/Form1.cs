@@ -13,22 +13,17 @@ namespace Bildverarbeitung_Wallberg
     public partial class Form1 : Form
     {
         Bitmap map;
-        string pictureName = "Kaffefleck.jpg";
+        string pictureName = "KaffeefleckGross.jpg";
 
         public Form1()
         {
             InitializeComponent();
 
-            map = Load_Image(DefaultVariables.GetProjectPath() + "Picture\\" + pictureName);
+            map = Bildverarbeitung.Load_Image(DefaultVariables.GetProjectPath() + "Picture\\" + pictureName);
 
             this.pbMain.Size = new System.Drawing.Size(map.Size.Width, map.Size.Height);
             this.pbMain.Image = map;
             this.pbMain.Refresh();
-        }
-
-        private Bitmap Load_Image(string imgPath)
-        {
-            return new Bitmap(imgPath);
         }
 
         private void btnGrey_Click(object sender, EventArgs e)
@@ -39,7 +34,7 @@ namespace Bildverarbeitung_Wallberg
 
         private void btnDefault_Click(object sender, EventArgs e)
         {
-            map = Load_Image(DefaultVariables.GetProjectPath() + "\\Picture\\" + pictureName);
+            map = Bildverarbeitung.Load_Image(DefaultVariables.GetProjectPath() + "\\Picture\\" + pictureName);
 
             this.pbMain.Image = map;
             this.Refresh();
