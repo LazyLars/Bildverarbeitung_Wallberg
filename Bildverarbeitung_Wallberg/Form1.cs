@@ -13,7 +13,7 @@ namespace Bildverarbeitung_Wallberg
     public partial class Form1 : Form
     {
         Bitmap map;
-        string pictureName = "KaffeefleckGross.jpg";
+        string pictureName = "Lenna.bmp";
 
         public Form1()
         {
@@ -43,6 +43,12 @@ namespace Bildverarbeitung_Wallberg
         private void btnHistogram_Click(object sender, EventArgs e)
         {
             this.pbMain.Image = Bildverarbeitung.LoadHistogramInImage(map);
+            this.Refresh();
+        }
+
+        private void btnHistoColor_Click(object sender, EventArgs e)
+        {
+            this.pbMain.Image = Bildverarbeitung.LoadHistogramInImage(map, false);
             this.Refresh();
         }
     }

@@ -32,6 +32,7 @@
             this.btnGrey = new System.Windows.Forms.Button();
             this.btnDefault = new System.Windows.Forms.Button();
             this.btnHistogram = new System.Windows.Forms.Button();
+            this.btnHistoColor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +46,7 @@
             // 
             // btnGrey
             // 
-            this.btnGrey.Location = new System.Drawing.Point(765, 41);
+            this.btnGrey.Location = new System.Drawing.Point(1070, 34);
             this.btnGrey.Name = "btnGrey";
             this.btnGrey.Size = new System.Drawing.Size(75, 23);
             this.btnGrey.TabIndex = 1;
@@ -55,7 +56,7 @@
             // 
             // btnDefault
             // 
-            this.btnDefault.Location = new System.Drawing.Point(765, 12);
+            this.btnDefault.Location = new System.Drawing.Point(1070, 5);
             this.btnDefault.Name = "btnDefault";
             this.btnDefault.Size = new System.Drawing.Size(75, 23);
             this.btnDefault.TabIndex = 2;
@@ -65,7 +66,7 @@
             // 
             // btnHistogram
             // 
-            this.btnHistogram.Location = new System.Drawing.Point(765, 70);
+            this.btnHistogram.Location = new System.Drawing.Point(1070, 63);
             this.btnHistogram.Name = "btnHistogram";
             this.btnHistogram.Size = new System.Drawing.Size(75, 23);
             this.btnHistogram.TabIndex = 3;
@@ -73,11 +74,22 @@
             this.btnHistogram.UseVisualStyleBackColor = true;
             this.btnHistogram.Click += new System.EventHandler(this.btnHistogram_Click);
             // 
+            // btnHistoColor
+            // 
+            this.btnHistoColor.Location = new System.Drawing.Point(1070, 92);
+            this.btnHistoColor.Name = "btnHistoColor";
+            this.btnHistoColor.Size = new System.Drawing.Size(75, 41);
+            this.btnHistoColor.TabIndex = 4;
+            this.btnHistoColor.Text = "Histogram Bunt";
+            this.btnHistoColor.UseVisualStyleBackColor = true;
+            this.btnHistoColor.Click += new System.EventHandler(this.btnHistoColor_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 505);
+            this.ClientSize = new System.Drawing.Size(1157, 505);
+            this.Controls.Add(this.btnHistoColor);
             this.Controls.Add(this.btnHistogram);
             this.Controls.Add(this.btnDefault);
             this.Controls.Add(this.btnGrey);
@@ -97,6 +109,7 @@
         private System.Windows.Forms.Button btnGrey;
         private System.Windows.Forms.Button btnDefault;
         private System.Windows.Forms.Button btnHistogram;
+        private System.Windows.Forms.Button btnHistoColor;
     }
 }
 
