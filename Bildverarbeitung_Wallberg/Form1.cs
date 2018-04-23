@@ -13,7 +13,7 @@ namespace Bildverarbeitung_Wallberg
     public partial class Form1 : Form
     {
         Bitmap map;
-        string pictureName = "Lenna.bmp";
+        string pictureName = "KaffeefleckGross.jpg";
 
         public Form1()
         {
