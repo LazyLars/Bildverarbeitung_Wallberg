@@ -51,5 +51,11 @@ namespace Bildverarbeitung_Wallberg
             this.pbMain.Image = Bildverarbeitung.LoadHistogramInImage(map, false);
             this.Refresh();
         }
+
+        private void btnHistoArea_Click(object sender, EventArgs e)
+        {
+            this.pbMain.Image = Bildverarbeitung.LoadHistogramAreaInImage(map);
+            this.Refresh();
+        }
     }
 }

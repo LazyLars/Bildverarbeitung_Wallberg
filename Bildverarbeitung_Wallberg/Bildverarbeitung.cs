@@ -100,7 +100,7 @@ namespace Bildverarbeitung_Wallberg
                     {
                         for (int y = bmpimg.Height; y >= (bmpimg.Height - histoArrayRed[counterArray]); y--)
                         {
-                            bmpimg.SetPixel((x + i), y - 1, Color.Blue);
+                            bmpimg.SetPixel((x + i), y - 1, Color.Green);
                         }
                     }
                 }
@@ -118,6 +118,104 @@ namespace Bildverarbeitung_Wallberg
 
                 counterArray++;
                 x++;
+            }
+
+            return bmpimg;
+        }
+
+        public static Bitmap LoadHistogramAreaInImage(Bitmap bmpimg)
+        {
+            int[] histoX = new int[bmpimg.Width];
+            int[] histoY = new int[bmpimg.Height];
+
+            bmpimg = ImageToGrey(bmpimg);
+
+            Color pixCol;
+
+            for (int x = 0; x < bmpimg.Width; x++)
+            {
+                int tempCounter = 0;
+                for (int y = 0; y < bmpimg.Height; y++)
+                {
+                    pixCol = bmpimg.GetPixel(x, y);
+                    tempCounter = tempCounter + pixCol.B;
+                }
+                histoX[x] = 255 - (tempCounter / bmpimg.Height);
+            }
+
+            for (int y = 0; y < bmpimg.Height; y++)
+            {
+                int tempCounter = 0;
+                for (int x = 0; x < bmpimg.Width; x++)
+                {
+                    pixCol = bmpimg.GetPixel(x, y);
+                    tempCounter = tempCounter + pixCol.B;
+                }
+                histoY[y] = 255 - (tempCounter / bmpimg.Width);
+            }
+
+            int maxY = (histoY.Max() / 5) * 4;
+            int maxX = (histoX.Max() / 5) * 4;
+            List<int> PositionMaxXList = new List<int>();
+            List<int> PositionMaxYList = new List<int>();
+
+            for (int i = 0; i < bmpimg.Width; i++)
+            {
+                if (maxX <= histoX[i])
+                {
+                    PositionMaxXList.Add(i);
+                }
+
+            }
+
+            for (int i = 0; i < bmpimg.Height; i++)
+            {
+                if (maxY <= histoY[i])
+                {
+                    PositionMaxYList.Add(i);
+                }
+            }
+
+            foreach (var x in PositionMaxXList)
+            {
+                foreach (var y in PositionMaxYList)
+                {
+                    bmpimg.SetPixel(x, y, Color.Red);
+                }
+            }
+
+            int calcWidth = (int)Math.Round((double)bmpimg.Width / histoX.Length);
+
+            int counterArray = 0;
+
+            for (int x = 0; x < bmpimg.Width; x++)
+            {
+                for (int i = 0; i < calcWidth; i++)
+                {
+                    for (int y = bmpimg.Height; y >= (bmpimg.Height - histoX[counterArray]); y--)
+                    {
+                        bmpimg.SetPixel((x + i), y - 1, Color.Black);
+                    }
+                }
+                counterArray++;
+                //x++;
+            }
+
+            int calcHeight = (int)Math.Round((double)bmpimg.Height / histoY.Length);
+
+            counterArray = 0;
+
+            for (int y = 0; y < bmpimg.Height; y++)
+            {
+                for (int i = 0; i < calcHeight; i++)
+                {
+                    for (int x = bmpimg.Width; x >= (bmpimg.Width - histoY[counterArray]); x--)
+                    {
+                        bmpimg.SetPixel(x - 1, (y + i), Color.Black);
+                    }
+                }
+                counterArray++;
+                //y++;
             }
 
             return bmpimg;
