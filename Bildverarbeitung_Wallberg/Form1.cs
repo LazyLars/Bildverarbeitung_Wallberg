@@ -57,5 +57,11 @@ namespace Bildverarbeitung_Wallberg
             this.pbMain.Image = Bildverarbeitung.LoadHistogramAreaInImage(map);
             this.Refresh();
         }
+
+        private void btn_greyscales_Click(object sender, EventArgs e)
+        {
+            this.pbMain.Image = Bildverarbeitung.FixGrey2RealBlackAndWhite(map);
+            this.Refresh();
+        }
     }
 }

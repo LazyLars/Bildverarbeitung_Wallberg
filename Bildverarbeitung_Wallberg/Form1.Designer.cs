@@ -34,6 +34,7 @@
             this.btnHistogram = new System.Windows.Forms.Button();
             this.btnHistoColor = new System.Windows.Forms.Button();
             this.btnHistoArea = new System.Windows.Forms.Button();
+            this.btn_greyscales = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,11 +96,22 @@
             this.btnHistoArea.UseVisualStyleBackColor = true;
             this.btnHistoArea.Click += new System.EventHandler(this.btnHistoArea_Click);
             // 
+            // btn_greyscales
+            // 
+            this.btn_greyscales.Location = new System.Drawing.Point(1070, 187);
+            this.btn_greyscales.Name = "btn_greyscales";
+            this.btn_greyscales.Size = new System.Drawing.Size(75, 38);
+            this.btn_greyscales.TabIndex = 6;
+            this.btn_greyscales.Text = "Clean Greyscales";
+            this.btn_greyscales.UseVisualStyleBackColor = true;
+            this.btn_greyscales.Click += new System.EventHandler(this.btn_greyscales_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1157, 505);
+            this.Controls.Add(this.btn_greyscales);
             this.Controls.Add(this.btnHistoArea);
             this.Controls.Add(this.btnHistoColor);
             this.Controls.Add(this.btnHistogram);
@@ -123,6 +135,7 @@
         private System.Windows.Forms.Button btnHistogram;
         private System.Windows.Forms.Button btnHistoColor;
         private System.Windows.Forms.Button btnHistoArea;
+        private System.Windows.Forms.Button btn_greyscales;
     }
 }
 

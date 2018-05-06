@@ -33,6 +33,30 @@ namespace Bildverarbeitung_Wallberg
             return map;
         }
 
+        public static Bitmap FixGrey2RealBlackAndWhite(Bitmap bmpimg)
+        {
+            for (int y = 0; y < bmpimg.Height; y++)
+            {
+                for (int x = 0; x < bmpimg.Width; x++)
+                {
+                    // get the color value from any RGB element
+                    // we assume that somebody already converted it into greyscale already
+                    int greyscale = bmpimg.GetPixel(x, y).R;
+
+                    if (greyscale <= 50)
+                    {
+                        bmpimg.SetPixel(x, y, Color.Black);
+                    }
+                    else if (greyscale >= 220)
+                    {
+                        bmpimg.SetPixel(x, y, Color.White);
+                    }
+
+                }
+            }
+            return bmpimg;
+        }
+
         public static Bitmap LoadHistogramInImage(Bitmap bmpimg, bool GreyScale = true)
         {
             int[] histoArrayRed = new int[256];
