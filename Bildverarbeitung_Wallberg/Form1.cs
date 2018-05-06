@@ -60,7 +60,7 @@ namespace Bildverarbeitung_Wallberg
 
         private void btn_greyscales_Click(object sender, EventArgs e)
         {
-            this.pbMain.Image = Bildverarbeitung.FixGrey2RealBlackAndWhite(map);
+            this.pbMain.Image = Bildverarbeitung.FixGrey2RealBlackAndWhite(map, (int)inputUpperBlackFilter.Value, (int)inputLowerWhiteFilter.Value);
             this.Refresh();
         }
     }

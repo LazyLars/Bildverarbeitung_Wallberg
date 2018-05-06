@@ -35,7 +35,13 @@
             this.btnHistoColor = new System.Windows.Forms.Button();
             this.btnHistoArea = new System.Windows.Forms.Button();
             this.btn_greyscales = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.inputUpperBlackFilter = new System.Windows.Forms.NumericUpDown();
+            this.inputLowerWhiteFilter = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inputUpperBlackFilter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inputLowerWhiteFilter)).BeginInit();
             this.SuspendLayout();
             // 
             // pbMain
@@ -105,12 +111,68 @@
             this.btn_greyscales.Text = "Clean Greyscales";
             this.btn_greyscales.UseVisualStyleBackColor = true;
             this.btn_greyscales.Click += new System.EventHandler(this.btn_greyscales_Click);
+            //
+            // label1
+            //
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(973, 231);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Upper Black Filter";
+            //
+            // label2
+            //
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(972, 257);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Lower White Filter";
+            //
+            // inputUpperBlackFilter
+            //
+            this.inputUpperBlackFilter.Location = new System.Drawing.Point(1070, 231);
+            this.inputUpperBlackFilter.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.inputUpperBlackFilter.Name = "inputUpperBlackFilter";
+            this.inputUpperBlackFilter.Size = new System.Drawing.Size(75, 20);
+            this.inputUpperBlackFilter.TabIndex = 11;
+            this.inputUpperBlackFilter.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            //
+            // inputLowerWhiteFilter
+            //
+            this.inputLowerWhiteFilter.Location = new System.Drawing.Point(1070, 257);
+            this.inputLowerWhiteFilter.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.inputLowerWhiteFilter.Name = "inputLowerWhiteFilter";
+            this.inputLowerWhiteFilter.Size = new System.Drawing.Size(75, 20);
+            this.inputLowerWhiteFilter.TabIndex = 12;
+            this.inputLowerWhiteFilter.Value = new decimal(new int[] {
+            220,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1157, 505);
+            this.Controls.Add(this.inputLowerWhiteFilter);
+            this.Controls.Add(this.inputUpperBlackFilter);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_greyscales);
             this.Controls.Add(this.btnHistoArea);
             this.Controls.Add(this.btnHistoColor);
@@ -123,7 +185,10 @@
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inputUpperBlackFilter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inputLowerWhiteFilter)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -136,6 +201,10 @@
         private System.Windows.Forms.Button btnHistoColor;
         private System.Windows.Forms.Button btnHistoArea;
         private System.Windows.Forms.Button btn_greyscales;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown inputUpperBlackFilter;
+        private System.Windows.Forms.NumericUpDown inputLowerWhiteFilter;
     }
 }
 
