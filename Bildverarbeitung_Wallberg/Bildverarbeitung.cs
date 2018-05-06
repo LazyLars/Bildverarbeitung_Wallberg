@@ -40,10 +40,12 @@ namespace Bildverarbeitung_Wallberg
 
             Color pixCol;
 
-            if (GreyScale)
-            {
-                bmpimg = ImageToGrey(bmpimg);
-            }
+            // converting the image to greyscale should be the job of the UI
+            // we should not call other filters within our filters
+            //if (GreyScale)
+            //{
+            //    bmpimg = ImageToGrey(bmpimg);
+            //}
 
             for (int x = 0; x < bmpimg.Height; x++)
             {
@@ -51,6 +53,7 @@ namespace Bildverarbeitung_Wallberg
                 {
                     pixCol = bmpimg.GetPixel(x, y);
 
+                    // key is the greyscale, value is the amount of pixels with that greyscale
                     histoArrayRed[pixCol.R] = histoArrayRed[pixCol.R] + 1;
                     if (!GreyScale)
                     {
@@ -77,11 +80,12 @@ namespace Bildverarbeitung_Wallberg
             {
                 if (histoArrayRed[counterArray] > histoArrayGreen[counterArray] && histoArrayRed[counterArray] > histoArrayBlue[counterArray])
                 {
+                    Color histogrammColor = GreyScale == true ? Color.Black : Color.Red;
                     for (int i = 0; i < calcWidth; i++)
                     {
                         for (int y = bmpimg.Height; y >= (bmpimg.Height - histoArrayRed[counterArray]); y--)
                         {
-                            bmpimg.SetPixel((x + i), y - 1, Color.Red);
+                            bmpimg.SetPixel((x + i), y - 1, histogrammColor);
                         }
                     }
                 }
