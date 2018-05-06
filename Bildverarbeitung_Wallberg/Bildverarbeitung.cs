@@ -25,8 +25,7 @@ namespace Bildverarbeitung_Wallberg
                 {
                     pixCol = map.GetPixel(x, y);
                     sumCol = (pixCol.R + pixCol.G + pixCol.B) / 3;
-
-                    map.SetPixel(x, y, Color.FromArgb(sumCol, sumCol, sumCol));
+                    map.SetPixel(x, y, Color.FromArgb(pixCol.A, sumCol, sumCol, sumCol));
                 }
             }
 
