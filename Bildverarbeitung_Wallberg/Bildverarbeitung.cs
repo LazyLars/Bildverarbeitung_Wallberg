@@ -66,7 +66,9 @@ namespace Bildverarbeitung_Wallberg
             Color pixCol;
 
             if (GreyScale)
+            {
                 bmpimg = ImageToGrey(bmpimg);
+            }
 
             for (int x = 0; x < bmpimg.Height; x++)
             {
