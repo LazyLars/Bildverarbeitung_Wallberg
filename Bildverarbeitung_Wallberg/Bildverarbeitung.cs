@@ -9,6 +9,7 @@ namespace Bildverarbeitung_Wallberg
 {
     public static class Bildverarbeitung
     {
+
         public static Bitmap Load_Image(string imgPath)
         {
             return new Bitmap(imgPath);
@@ -33,7 +34,7 @@ namespace Bildverarbeitung_Wallberg
             return map;
         }
 
-        public static Bitmap FixGrey2RealBlackAndWhite(Bitmap bmpimg)
+        public static Bitmap FixGrey2RealBlackAndWhite(Bitmap bmpimg, int UpperBlackLimit = 50, int LowerWhitelimit = 220)
         {
             for (int y = 0; y < bmpimg.Height; y++)
             {
@@ -43,11 +44,11 @@ namespace Bildverarbeitung_Wallberg
                     // we assume that somebody already converted it into greyscale already
                     int greyscale = bmpimg.GetPixel(x, y).R;
 
-                    if (greyscale <= 50)
+                    if (greyscale <= UpperBlackLimit)
                     {
                         bmpimg.SetPixel(x, y, Color.Black);
                     }
-                    else if (greyscale >= 220)
+                    else if (greyscale >= LowerWhitelimit)
                     {
                         bmpimg.SetPixel(x, y, Color.White);
                     }
